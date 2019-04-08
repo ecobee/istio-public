@@ -244,41 +244,24 @@ gateways:
       #  memory: 256Mi
     cpu:
       targetAverageUtilization: 80
-    loadBalancerIP: ""
-    serviceAnnotations: {}
+    loadBalancerIP: "REPLACE_ME"
+    loadBalancerSourceRanges: ["REPLACE_ME","REPLACE_ME"]
+
+    serviceAnnotations:
+      cloud.google.com/load-balancer-type: "Internal"
+
     type: LoadBalancer #change to NodePort, ClusterIP or LoadBalancer if need be
     # Uncomment the following line to preserve client source ip.
     # externalTrafficPolicy: Local
 
     ports:
-      ## You can add custom gateway ports
-    - port: 80
-      targetPort: 80
-      name: http2
-      nodePort: 31380
-    - port: 443
-      name: https
-      nodePort: 31390
-    - port: 31400
-      name: tcp
-      nodePort: 31400
-    # Pilot and Citadel MTLS ports are enabled in gateway - but will only redirect
-    # to pilot/citadel if global.meshExpansion settings are enabled.
-    - port: 15011
-      targetPort: 15011
-      name: tcp-pilot-grpc-tls
-    - port: 8060
-      targetPort: 8060
-      name: tcp-citadel-grpc-tls
-    - port: 853
-      targetPort: 853
-      name: tcp-dns-tls
-    - port: 15030
-      targetPort: 15030
-      name: http2-prometheus
-    - port: 15031
-      targetPort: 15031
-      name: http2-grafana
+    - port: "REPLACE_ME"
+      name: "REPLACE_ME"
+      nodePort: "REPLACE_ME"
+    - port: "REPLACE_ME"
+      name: "REPLACE_ME"
+      nodePort: "REPLACE_ME"
+
     secretVolumes:
     - name: ingressgateway-certs
       secretName: istio-ingressgateway-certs
